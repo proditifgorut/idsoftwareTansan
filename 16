@@ -7,6 +7,7 @@ const navLinks = [
   { to: 'iot-services', label: 'Layanan IoT' },
   { to: 'umkm-services', label: 'Layanan UMKM' },
   { to: 'portfolio', label: 'Portofolio' },
+  { to: 'project-ideas', label: 'Ide Proyek' },
   { to: 'pricing', label: 'Harga' },
   { to: 'faq', label: 'Tanya Jawab' },
   { to: 'contact', label: 'Kontak' },

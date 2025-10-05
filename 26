@@ -1,0 +1,141 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { BrainCircuit, PlugZap, Briefcase, Wrench } from 'lucide-react';
+
+const ideaCategories = [
+  {
+    category: 'Layanan Produk Software Cerdas',
+    subtitle: 'Fokus pada SaaS, platform AI, atau aplikasi web/mobile berbasis kecerdasan buatan.',
+    icon: <BrainCircuit className="h-10 w-10 text-secondary" />,
+    projects: [
+      { title: 'Smart Virtual Assistant', description: 'Asisten AI multi-fungsi untuk produktivitas digital dengan NLP untuk menjawab, menjadwalkan, dan membuat ringkasan.' },
+      { title: 'AI Copywriter Pro', description: 'Generator konten cerdas yang menghasilkan caption, iklan, atau deskripsi produk otomatis untuk UMKM.' },
+      { title: 'SmartVision ID', description: 'Sistem deteksi dan klasifikasi gambar dengan AI Vision untuk mendeteksi objek, wajah, atau produk.' },
+      { title: 'InsightAI', description: 'Platform analisis data otomatis yang mengolah dataset bisnis menjadi insight visual interaktif.' },
+      { title: 'Predictify', description: 'Sistem prediksi penjualan dan tren pasar menggunakan Deep Learning untuk membaca tren secara otomatis.' },
+      { title: 'ChatMentor', description: 'Chatbot edukatif cerdas berbasis teks dan suara untuk membantu siswa memahami materi pembelajaran.' },
+      { title: 'RecomAI', description: 'Sistem rekomendasi produk dan konten berbasis machine learning untuk personalisasi pengalaman pengguna.' },
+      { title: 'AI Translator Plus', description: 'Sistem terjemahan dan koreksi grammar otomatis berbasis model AI seperti GPT atau Transformer.' },
+    ]
+  },
+  {
+    category: 'Software IoT (Integrasi Arduino + Python)',
+    subtitle: 'Fokus pada sistem cerdas yang menghubungkan sensor IoT dengan pemrosesan AI/ML.',
+    icon: <PlugZap className="h-10 w-10 text-secondary" />,
+    projects: [
+      { title: 'SmartFarm Monitor', description: 'Sistem IoT untuk pemantauan tanaman dan irigasi otomatis, dikontrol via web/mobile dengan analisis AI.' },
+      { title: 'AquaSense', description: 'Sistem monitoring tambak ikan dengan sensor pH dan AI untuk prediksi kualitas air dan kadar oksigen.' },
+      { title: 'GreenGrow', description: 'Aplikasi IoT untuk prediksi panen dan kontrol nutrisi otomatis berdasarkan data sensor harian.' },
+      { title: 'SmartWaste Management', description: 'Sistem pemantauan sampah cerdas dengan sensor volume dan AI vision untuk optimasi rute.' },
+      { title: 'HomeSecure AI', description: 'Sistem keamanan rumah dengan kamera AI yang mendeteksi gerakan mencurigakan dan mengirim notifikasi.' },
+      { title: 'SmartWarehouse System', description: 'IoT untuk deteksi stok barang dan kendali suhu gudang logistik/dropship secara otomatis.' },
+      { title: 'AgroDrone Vision', description: 'Pemantauan lahan pertanian dengan drone dan AI analisis citra untuk deteksi stres tanaman dan hama.' },
+    ]
+  },
+  {
+    category: 'Software untuk UMKM dan Bisnis',
+    subtitle: 'Fokus pada efisiensi, pemasaran, dan otomasi berbasis AI untuk pelaku usaha.',
+    icon: <Briefcase className="h-10 w-10 text-secondary" />,
+    projects: [
+      { title: 'SmartBiz Manager', description: 'Dashboard analitik penjualan dan laba UMKM berbasis AI yang menampilkan insight dan prediksi omzet.' },
+      { title: 'AI Marketing Copilot', description: 'Asisten pemasaran otomatis untuk UMKM dan dropshipper yang membuat strategi dan copywriting.' },
+      { title: 'Affiliate Intelligence System', description: 'AI untuk analisis performa, optimasi afiliasi, dan perhitungan komisi otomatis.' },
+      { title: 'SmartInventory', description: 'Sistem manajemen stok dan harga otomatis berbasis prediksi AI untuk restock dan harga dinamis.' },
+      { title: 'EcomVision', description: 'AI Analytics untuk marketplace (Shopee, Tokopedia) yang menganalisis perilaku pelanggan dan tren produk.' },
+    ]
+  }
+];
+
+const techStack = {
+    category: 'Bonus: Ide Integrasi Teknis',
+    icon: <Wrench className="h-10 w-10 text-secondary" />,
+    items: [
+        { title: 'Backend', description: 'FastAPI / Flask (Python)' },
+        { title: 'Frontend', description: 'React.js / Next.js / Vue.js' },
+        { title: 'AI', description: 'OpenAI API, TensorFlow, PyTorch, Hugging Face' },
+        { title: 'IoT', description: 'Arduino / ESP32 + MQTT + Firebase' },
+        { title: 'Hosting', description: 'Vercel, Hostinger VPS, AWS, Render' },
+    ]
+};
+
+const ProjectIdeas: React.FC = () => {
+  return (
+    <section id="project-ideas" className="py-20 bg-light-gray">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Rekomendasi Ide Proyek</h2>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-dark-gray">
+            Berikut adalah beberapa ide proyek software cerdas inovatif yang bisa kami kembangkan untuk Anda, terbagi dalam berbagai kategori fokus.
+          </p>
+        </div>
+
+        {ideaCategories.map((categoryData, catIndex) => (
+          <div key={catIndex} className="mb-16">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              {categoryData.icon}
+              <div>
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-primary">{categoryData.category}</h3>
+                <p className="text-md text-dark-gray">{categoryData.subtitle}</p>
+              </div>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {categoryData.projects.map((project, projIndex) => (
+                <motion.div
+                  key={projIndex}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: projIndex * 0.05 }}
+                  className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  <h4 className="text-lg font-bold font-display text-primary mb-2">{project.title}</h4>
+                  <p className="text-dark-gray text-sm">{project.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* Bonus Tech Stack Section */}
+        <div className="mt-20">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              {techStack.icon}
+              <div>
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-primary">{techStack.category}</h3>
+                <p className="text-md text-dark-gray">Teknologi modern yang kami gunakan untuk membangun solusi Anda.</p>
+              </div>
+            </motion.div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                {techStack.items.map((tech, index) => (
+                     <motion.div
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="bg-white p-6 rounded-xl shadow-md text-center"
+                    >
+                        <h4 className="text-md font-bold text-primary">{tech.title}</h4>
+                        <p className="text-dark-gray text-sm mt-1">{tech.description}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProjectIdeas;
