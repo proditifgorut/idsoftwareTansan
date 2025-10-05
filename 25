@@ -1,0 +1,88 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { MessageSquareHeart, TrendingUp, Sparkles, SmilePlus, FileText, LayoutDashboard, Users, Tags } from 'lucide-react';
+
+const umkmServices = [
+  {
+    icon: <MessageSquareHeart className="h-10 w-10 text-secondary" />,
+    title: 'Chatbot & Customer Service',
+    description: 'Melayani pelanggan otomatis 24/7 di WhatsApp atau website untuk menjawab pertanyaan stok, harga, dan status pengiriman.',
+  },
+  {
+    icon: <TrendingUp className="h-10 w-10 text-secondary" />,
+    title: 'Prediksi Penjualan & Permintaan',
+    description: 'Model machine learning untuk memprediksi produk yang sedang tren dan akan laku keras berdasarkan data penjualan historis.',
+  },
+  {
+    icon: <Sparkles className="h-10 w-10 text-secondary" />,
+    title: 'Rekomendasi Produk Cerdas',
+    description: 'Meningkatkan up-selling & cross-selling dengan merekomendasikan "produk serupa" atau "yang sering dibeli bersama".',
+  },
+  {
+    icon: <SmilePlus className="h-10 w-10 text-secondary" />,
+    title: 'Analisis Sentimen Pelanggan',
+    description: 'Menganalisis ulasan dari marketplace dan media sosial untuk mengukur kepuasan pelanggan dan mendapatkan masukan berharga.',
+  },
+  {
+    icon: <FileText className="h-10 w-10 text-secondary" />,
+    title: 'Pembuatan Konten Otomatis',
+    description: 'Generator caption, deskripsi produk, dan copywriting iklan otomatis untuk membantu afiliasi dan tim pemasaran.',
+  },
+  {
+    icon: <LayoutDashboard className="h-10 w-10 text-secondary" />,
+    title: 'Dashboard Analitik Bisnis',
+    description: 'Dashboard visual dengan insight AI tentang penjualan, performa afiliasi, margin, dan saran strategi bisnis.',
+  },
+  {
+    icon: <Users className="h-10 w-10 text-secondary" />,
+    title: 'Sistem Afiliasi Cerdas',
+    description: 'AI menilai dan merekomendasikan afiliasi terbaik berdasarkan performa CTR, konversi, dan kecepatan respon.',
+  },
+  {
+    icon: <Tags className="h-10 w-10 text-secondary" />,
+    title: 'Optimasi Stok & Harga',
+    description: 'AI memprediksi stok habis dan dapat menyesuaikan harga secara dinamis berdasarkan tren permintaan pasar.',
+  },
+];
+
+const cardVariants = {
+    offscreen: { y: 50, opacity: 0 },
+    onscreen: {
+        y: 0,
+        opacity: 1,
+        transition: { type: 'spring', bounce: 0.4, duration: 0.8 },
+    },
+};
+
+const UmkmServices: React.FC = () => {
+  return (
+    <section id="umkm-services" className="py-20 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Ekosistem Software Cerdas untuk UMKM</h2>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-dark-gray">
+            Memberdayakan UMKM, Afiliasi, dan Dropshipper dengan automasi pemasaran, analisis pelanggan, dan optimasi penjualan melalui platform SaaS terintegrasi.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {umkmServices.map((service, index) => (
+            <motion.div
+              key={index}
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={cardVariants}
+              className="bg-light-gray p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300"
+            >
+              <div className="mb-4">{service.icon}</div>
+              <h3 className="text-xl font-bold font-display text-primary mb-2">{service.title}</h3>
+              <p className="text-dark-gray">{service.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default UmkmServices;

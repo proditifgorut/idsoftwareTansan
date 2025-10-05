@@ -1,0 +1,73 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const projects = [
+  {
+    title: 'Dasbor Prediksi Penjualan',
+    category: 'Machine Learning',
+    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/0a2540/white?text=Prediksi+Penjualan',
+    description: 'Dasbor prediktif yang meramalkan tren penjualan di masa depan dengan akurasi 92% menggunakan model XGBoost.'
+  },
+  {
+    title: 'Sistem Irigasi Cerdas (Smart Farming)',
+    category: 'Otomatisasi IoT',
+    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/22c55e/white?text=Smart+Farming',
+    description: 'Mengimplementasikan sistem irigasi otomatis berbasis Arduino dan Python yang mengurangi penggunaan air hingga 40%.'
+  },
+  {
+    title: 'AI Marketing Copilot untuk UMKM',
+    category: 'SaaS untuk Bisnis',
+    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/ff6f61/white?text=UMKM+Copilot',
+    description: 'Platform SaaS yang membantu UMKM membuat konten promosi dan ide campaign secara otomatis menggunakan AI.'
+  },
+  {
+    title: 'Chatbot Dukungan Berbasis NLP',
+    category: 'Pengembangan Software Cerdas',
+    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/6b7c93/white?text=Chatbot+Cerdas',
+    description: 'Mengembangkan chatbot khusus yang menyelesaikan 75% pertanyaan pelanggan secara otomatis.'
+  },
+  {
+    title: 'Monitoring Kualitas Air Tambak Ikan',
+    category: 'Analitik IoT',
+    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/3b82f6/white?text=Monitoring+Tambak',
+    description: 'Membangun dasbor real-time untuk memantau pH, suhu, dan oksigen terlarut (DO) di tambak ikan.'
+  },
+];
+
+const Portfolio: React.FC = () => {
+  return (
+    <section id="portfolio" className="py-20 bg-light-gray">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Portofolio Proyek Kami</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-dark-gray">
+            Lihat bagaimana kami telah membantu bisnis seperti Anda berhasil dengan data, Software Cerdas, dan IoT.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+             <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-lg shadow-md overflow-hidden group"
+            >
+              <div className="overflow-hidden">
+                <img src={project.imageUrl} alt={project.title} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <div className="p-6">
+                <p className="text-sm font-medium text-secondary mb-1">{project.category}</p>
+                <h3 className="text-xl font-bold font-display text-primary mb-2">{project.title}</h3>
+                <p className="text-dark-gray">{project.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Portfolio;

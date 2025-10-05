@@ -1,0 +1,94 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-scroll';
+import { Bot, Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { to: 'services', label: 'Layanan Software Cerdas' },
+  { to: 'iot-services', label: 'Layanan IoT' },
+  { to: 'umkm-services', label: 'Layanan UMKM' },
+  { to: 'portfolio', label: 'Portofolio' },
+  { to: 'pricing', label: 'Harga' },
+  { to: 'faq', label: 'Tanya Jawab' },
+  { to: 'contact', label: 'Kontak' },
+];
+
+const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-md backdrop-blur-sm' : 'bg-transparent'}`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <Link to="hero" smooth={true} duration={500} className="flex items-center gap-2 cursor-pointer">
+            <Bot className="h-8 w-8 text-secondary" />
+            <span className="text-xl font-bold font-display text-primary">Tansan IDSoftware</span>
+          </Link>
+
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                offset={-70}
+                className="text-primary font-medium hover:text-secondary transition-colors cursor-pointer text-sm lg:text-base"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden md:flex">
+             <Link to="contact" smooth={true} duration={500} offset={-70} className="bg-secondary text-white px-5 py-2.5 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                Dapatkan Estimasi Gratis
+             </Link>
+          </div>
+
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-primary">
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-lg">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                offset={-70}
+                onClick={() => setIsOpen(false)}
+                className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-light-gray hover:text-secondary cursor-pointer"
+              >
+                {link.label}
+              </Link>
+            ))}
+             <div className="px-3 py-4">
+                <Link to="contact" smooth={true} duration={500} offset={-70} onClick={() => setIsOpen(false)} className="w-full text-center bg-secondary text-white px-5 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors block">
+                    Dapatkan Estimasi Gratis
+                </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;

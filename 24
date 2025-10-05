@@ -1,0 +1,120 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Sprout, Fish, Shrimp, Building2, Droplets, TestTube, Drum, FlaskConical, Warehouse, CloudSun } from 'lucide-react';
+
+const iotProjects = [
+  {
+    icon: <Sprout className="h-10 w-10 text-secondary" />,
+    title: 'Smart Farming System',
+    description: 'Sistem berbasis Arduino yang memantau kelembapan tanah dan suhu udara, serta mengontrol penyiraman otomatis melalui web atau aplikasi mobile.',
+    category: 'Pertanian',
+  },
+  {
+    icon: <Fish className="h-10 w-10 text-secondary" />,
+    title: 'Smart Fish Pond Monitoring',
+    description: 'Sistem pemantauan tambak ikan yang mengukur pH, suhu, dan kadar oksigen, lalu mengirim data ke server Python dan ditampilkan di dashboard.',
+    category: 'Perikanan',
+  },
+  {
+    icon: <Shrimp className="h-10 w-10 text-secondary" />,
+    title: 'Smart Shrimp Pond Automation',
+    description: 'Tambak udang pintar yang mengatur aerator dan pH otomatis, dikontrol melalui aplikasi mobile dan dashboard web berbasis Python.',
+    category: 'Perikanan',
+  },
+  {
+    icon: <Building2 className="h-10 w-10 text-secondary" />,
+    title: 'IoT Smart Greenhouse',
+    description: 'Sistem otomatisasi suhu, kelembapan, dan pencahayaan rumah kaca. Arduino mengirim data ke Python server dan ditampilkan ke dashboard.',
+    category: 'Pertanian',
+  },
+  {
+    icon: <Droplets className="h-10 w-10 text-secondary" />,
+    title: 'Smart Irrigation System',
+    description: 'IoT untuk pengairan otomatis pertanian berbasis data kelembapan tanah. Kontrol sistem bisa dilakukan dari website atau aplikasi Android.',
+    category: 'Pertanian',
+  },
+  {
+    icon: <TestTube className="h-10 w-10 text-secondary" />,
+    title: 'Water Quality Analyzer',
+    description: 'Pemantauan kualitas air berbasis Arduino yang mengirim data pH, TDS, dan suhu ke server Python, lalu divisualisasikan di dashboard.',
+    category: 'Perikanan',
+  },
+  {
+    icon: <Drum className="h-10 w-10 text-secondary" />,
+    title: 'Smart Fish Feeder',
+    description: 'Arduino mengontrol servo pemberi pakan otomatis yang dapat dijadwalkan dari website atau aplikasi mobile, lengkap dengan monitoring stok pakan.',
+    category: 'Perikanan',
+  },
+  {
+    icon: <FlaskConical className="h-10 w-10 text-secondary" />,
+    title: 'Soil Nutrient Monitor',
+    description: 'Arduino membaca kadar NPK tanah dan mengirim ke server Python yang menampilkan hasil di website dan app untuk rekomendasi pemupukan.',
+    category: 'Pertanian',
+  },
+  {
+    icon: <Warehouse className="h-10 w-10 text-secondary" />,
+    title: 'Post-Harvest Storage Monitor',
+    description: 'Pemantauan suhu dan kelembapan di gudang hasil panen dengan Arduino, Python, dan web/mobile dashboard untuk mencegah kerusakan.',
+    category: 'Penyimpanan',
+  },
+  {
+    icon: <CloudSun className="h-10 w-10 text-secondary" />,
+    title: 'IoT Weather Station',
+    description: 'Stasiun cuaca mini untuk pertanian & tambak, berbasis Arduino dan dashboard Python web + mobile untuk data cuaca real-time.',
+    category: 'Monitoring',
+  },
+];
+
+const cardVariants = {
+  offscreen: {
+    y: 50,
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+
+const IotServices: React.FC = () => {
+  return (
+    <section id="iot-services" className="py-20 bg-light-gray">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Layanan IoT & Otomatisasi</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-dark-gray">
+            Kami merancang dan membangun sistem IoT khusus dengan Arduino, Python, dan platform mobile untuk otomatisasi cerdas di berbagai sektor.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {iotProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={cardVariants}
+              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col"
+            >
+              <div className="flex items-start justify-between">
+                {project.icon}
+                <span className="text-xs font-bold uppercase text-secondary bg-secondary/10 px-2 py-1 rounded-full">{project.category}</span>
+              </div>
+              <div className="mt-4 flex-grow">
+                <h3 className="text-xl font-bold font-display text-primary mb-2">{project.title}</h3>
+                <p className="text-dark-gray">{project.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default IotServices;

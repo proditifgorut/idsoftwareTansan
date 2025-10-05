@@ -1,0 +1,75 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { BrainCircuit, DatabaseZap, LineChart, BotMessageSquare } from 'lucide-react';
+
+const services = [
+  {
+    icon: <BrainCircuit className="h-10 w-10 text-secondary" />,
+    title: 'Software Cerdas & Machine Learning',
+    description: 'Sistem prediksi khusus, deteksi penipuan, chatbot NLP (GPT, BERT), dan solusi computer vision untuk mengotomatisasi dan mengoptimalkan operasi Anda.',
+  },
+  {
+    icon: <DatabaseZap className="h-10 w-10 text-secondary" />,
+    title: 'Data Mining & Big Data',
+    description: 'Temukan pola tersembunyi dengan analisis transaksi (Apriori), clustering pelanggan (K-Means), dan pipeline pemrosesan big data yang kuat (ETL, Spark).',
+  },
+  {
+    icon: <LineChart className="h-10 w-10 text-secondary" />,
+    title: 'Konsultasi Data Science',
+    description: 'Manfaatkan pemodelan prediktif (XGBoost), peramalan time-series (Prophet), dan text mining untuk membuat keputusan berbasis data. Kami menerapkan model sebagai API yang skalabel.',
+  },
+  {
+    icon: <BotMessageSquare className="h-10 w-10 text-secondary" />,
+    title: 'Layanan Analitik Data',
+    description: 'Dapatkan wawasan real-time dengan dasbor interaktif (Tableau, Power BI), laporan bisnis otomatis, dan visualisasi data yang menarik.',
+  },
+];
+
+const cardVariants = {
+  offscreen: {
+    y: 50,
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+
+const Services: React.FC = () => {
+  return (
+    <section id="services" className="py-20 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Keahlian Software Cerdas & Data Science</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-dark-gray">
+            Kami menyediakan solusi menyeluruh untuk mengubah data Anda menjadi keunggulan kompetitif.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={cardVariants}
+              className="bg-light-gray p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300"
+            >
+              <div className="mb-4">{service.icon}</div>
+              <h3 className="text-xl font-bold font-display text-primary mb-2">{service.title}</h3>
+              <p className="text-dark-gray">{service.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;

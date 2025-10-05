@@ -1,0 +1,52 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const Contact: React.FC = () => {
+  return (
+    <section id="contact" className="py-20 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Bangun Sistem Cerdas untuk Bisnis Anda</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-dark-gray">
+            Siap memulai proyek Software Cerdas Anda? Isi formulir di bawah ini untuk mendapatkan estimasi gratis tanpa kewajiban.
+          </p>
+        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto bg-light-gray p-8 rounded-xl shadow-lg"
+        >
+          <form>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-primary">Nama Lengkap</label>
+                <input type="text" id="name" className="mt-1 block w-full px-4 py-3 border border-medium-gray rounded-lg shadow-sm focus:ring-secondary focus:border-secondary" placeholder="Budi Santoso" />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-primary">Alamat Email</label>
+                <input type="email" id="email" className="mt-1 block w-full px-4 py-3 border border-medium-gray rounded-lg shadow-sm focus:ring-secondary focus:border-secondary" placeholder="anda@perusahaan.com" />
+              </div>
+            </div>
+            <div className="mt-6">
+              <label htmlFor="subject" className="block text-sm font-medium text-primary">Subjek</label>
+              <input type="text" id="subject" className="mt-1 block w-full px-4 py-3 border border-medium-gray rounded-lg shadow-sm focus:ring-secondary focus:border-secondary" placeholder="mis., Chatbot Cerdas untuk E-commerce" />
+            </div>
+            <div className="mt-6">
+              <label htmlFor="message" className="block text-sm font-medium text-primary">Detail Proyek</label>
+              <textarea id="message" rows={5} className="mt-1 block w-full px-4 py-3 border border-medium-gray rounded-lg shadow-sm focus:ring-secondary focus:border-secondary" placeholder="Ceritakan tentang proyek Anda, tujuan, dan data yang ada..."></textarea>
+            </div>
+            <div className="mt-8 text-center">
+              <button type="submit" className="bg-secondary text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-opacity-90 transition-all shadow-lg">
+                Dapatkan Estimasi Gratis Saya
+              </button>
+            </div>
+          </form>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;

@@ -1,0 +1,194 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
+import { Link } from 'react-scroll';
+
+const projectPackages = [
+  {
+    name: 'Starter',
+    price: '5 - 15 Jt',
+    description: 'Untuk analitik sederhana, model dasar, dan monitoring IoT.',
+    features: [
+      'Website / Dasbor Analitik Sederhana',
+      'Model ML Dasar (mis., Regresi)',
+      'Sistem Monitoring IoT Dasar',
+      'Hosting + Domain Gratis (1 Tahun)',
+    ],
+    isPopular: false,
+  },
+  {
+    name: 'Profesional',
+    price: '15 - 50 Jt',
+    description: 'Untuk sistem terintegrasi dan otomatisasi IoT.',
+    features: [
+      'Integrasi API Machine Learning',
+      'Otomatisasi IoT dengan Kontrol Web/Mobile',
+      'Dasbor Analitik Interaktif',
+      'Deployment ke Cloud (AWS/GCP)',
+    ],
+    isPopular: true,
+  },
+  {
+    name: 'Enterprise Cerdas',
+    price: '50 - 200 Jt+',
+    description: 'Untuk solusi Software Cerdas & IoT kustom berskala besar.',
+    features: [
+      'Software Cerdas Kustom: NLP, Vision, Recommender',
+      'Solusi IoT Terintegrasi Skala Besar',
+      'Arsitektur Big Data & Integrasi',
+      'Pemeliharaan & Pelatihan Tim',
+    ],
+    isPopular: false,
+  },
+];
+
+const saasPackages = [
+    {
+        name: 'UMKM Starter',
+        price: '299rb',
+        period: '/ bulan',
+        description: 'Alat esensial untuk memulai automasi bisnis Anda.',
+        features: [
+            'AI Copywriter (Konten Otomatis)',
+            'Chatbot Dasar (Tanya Jawab)',
+            'Analisis Sentimen (Basic)',
+            '1 Akun Pengguna',
+        ],
+        isPopular: false,
+    },
+    {
+        name: 'UMKM Growth',
+        price: '799rb',
+        period: '/ bulan',
+        description: 'Untuk bisnis yang ingin bertumbuh dengan data.',
+        features: [
+            'Semua di paket Starter',
+            'Dashboard Analitik Bisnis',
+            'Prediksi Penjualan (Basic)',
+            'Rekomendasi Produk',
+            '5 Akun Pengguna',
+        ],
+        isPopular: true,
+    },
+    {
+        name: 'UMKM Scale',
+        price: '1.9 Jt',
+        period: '/ bulan',
+        description: 'Solusi lengkap untuk skalabilitas dan efisiensi maksimal.',
+        features: [
+            'Semua di paket Growth',
+            'Sistem Afiliasi Cerdas',
+            'Optimasi Stok & Harga Dinamis',
+            'Integrasi API ke Sistem Lain',
+            'Akun Pengguna Tanpa Batas',
+        ],
+        isPopular: false,
+    },
+];
+
+const Pricing: React.FC = () => {
+  return (
+    <section id="pricing" className="py-20 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Project-based Pricing */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Harga Proyek Kustom</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-dark-gray">
+            Pilih paket yang sesuai dengan tujuan dan anggaran proyek Anda. Semua harga dalam Rupiah (IDR).
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          {projectPackages.map((pkg, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`rounded-xl border flex flex-col ${pkg.isPopular ? 'border-secondary shadow-2xl relative' : 'border-medium-gray shadow-lg'}`}
+            >
+              {pkg.isPopular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  Paling Populer
+                </div>
+              )}
+              <div className="p-8">
+                <h3 className="text-2xl font-bold font-display text-primary">{pkg.name}</h3>
+                <p className="mt-2 text-dark-gray">{pkg.description}</p>
+                <div className="mt-6">
+                  <span className="text-4xl font-bold text-primary">Rp {pkg.price}</span>
+                </div>
+              </div>
+              <div className="p-8 bg-light-gray flex-grow">
+                <ul className="space-y-4">
+                  {pkg.features.map((feature, i) => (
+                    <li key={i} className="flex items-start">
+                      <Check className="h-6 w-6 text-green-500 mr-3 flex-shrink-0" />
+                      <span className="text-dark-gray">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-8">
+                <Link to="contact" smooth={true} duration={500} offset={-70} className={`w-full text-center block px-6 py-3 rounded-lg font-semibold transition-colors ${pkg.isPopular ? 'bg-secondary text-white hover:bg-opacity-90' : 'bg-white text-secondary border border-secondary hover:bg-light-gray'}`}>
+                  Mulai Proyek
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* SaaS Pricing for UMKM */}
+        <div className="text-center mt-20 mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Paket Langganan untuk UMKM (SaaS)</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-dark-gray">
+            Tingkatkan skala bisnis Anda dengan platform software cerdas kami. Berlangganan bulanan, batalkan kapan saja.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          {saasPackages.map((pkg, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`rounded-xl border flex flex-col ${pkg.isPopular ? 'border-secondary shadow-2xl relative' : 'border-medium-gray shadow-lg'}`}
+            >
+              {pkg.isPopular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  Paling Populer
+                </div>
+              )}
+              <div className="p-8">
+                <h3 className="text-2xl font-bold font-display text-primary">{pkg.name}</h3>
+                <p className="mt-2 text-dark-gray">{pkg.description}</p>
+                <div className="mt-6">
+                  <span className="text-4xl font-bold text-primary">Rp {pkg.price}</span>
+                  <span className="text-lg text-dark-gray">{pkg.period}</span>
+                </div>
+              </div>
+              <div className="p-8 bg-light-gray flex-grow">
+                <ul className="space-y-4">
+                  {pkg.features.map((feature, i) => (
+                    <li key={i} className="flex items-start">
+                      <Check className="h-6 w-6 text-green-500 mr-3 flex-shrink-0" />
+                      <span className="text-dark-gray">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-8">
+                <Link to="contact" smooth={true} duration={500} offset={-70} className={`w-full text-center block px-6 py-3 rounded-lg font-semibold transition-colors ${pkg.isPopular ? 'bg-secondary text-white hover:bg-opacity-90' : 'bg-white text-secondary border border-secondary hover:bg-light-gray'}`}>
+                  Pilih Paket
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Pricing;

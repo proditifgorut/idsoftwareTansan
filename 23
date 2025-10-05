@@ -1,0 +1,43 @@
+import React from 'react';
+import { Bot } from 'lucide-react';
+import { Link } from 'react-scroll';
+
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+  
+  return (
+    <footer className="bg-primary text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <Bot className="h-8 w-8 text-secondary" />
+              <span className="text-xl font-bold font-display">Tansan IDSoftware</span>
+            </div>
+            <p className="text-gray-300 max-w-md">Mengubah bisnis dengan solusi Produk Software Cerdas, Machine Learning, dan Analitik Data khusus.</p>
+          </div>
+          <div>
+            <h3 className="font-bold font-display tracking-wider uppercase text-gray-200">Tautan</h3>
+            <ul className="mt-4 space-y-2">
+              <li><Link to="services" smooth={true} duration={500} offset={-70} className="hover:text-secondary transition-colors cursor-pointer">Layanan</Link></li>
+              <li><Link to="portfolio" smooth={true} duration={500} offset={-70} className="hover:text-secondary transition-colors cursor-pointer">Portofolio</Link></li>
+              <li><Link to="pricing" smooth={true} duration={500} offset={-70} className="hover:text-secondary transition-colors cursor-pointer">Harga</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold font-display tracking-wider uppercase text-gray-200">Kontak</h3>
+            <ul className="mt-4 space-y-2">
+              <li className="text-gray-300">contact@tansan.id</li>
+              <li className="text-gray-300">Jakarta, Indonesia</li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-12 border-t border-gray-700 pt-8 text-center text-gray-400">
+          <p>&copy; {currentYear} Tansan IDSoftware. Hak Cipta Dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
