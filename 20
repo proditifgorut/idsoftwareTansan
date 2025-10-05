@@ -93,8 +93,8 @@ const Pricing: React.FC = () => {
         {/* Project-based Pricing */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Harga Proyek Kustom</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-dark-gray">
-            Pilih paket yang sesuai dengan tujuan dan anggaran proyek Anda. Semua harga dalam Rupiah (IDR).
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-dark-gray">
+            Harga berikut adalah estimasi. Kami sangat fleksibel dan harga dapat dinegosiasikan tergantung pada kompleksitas, fitur, dan skala proyek yang Anda butuhkan.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
@@ -131,7 +131,7 @@ const Pricing: React.FC = () => {
               </div>
               <div className="p-8">
                 <Link to="contact" smooth={true} duration={500} offset={-70} className={`w-full text-center block px-6 py-3 rounded-lg font-semibold transition-colors ${pkg.isPopular ? 'bg-secondary text-white hover:bg-opacity-90' : 'bg-white text-secondary border border-secondary hover:bg-light-gray'}`}>
-                  Mulai Proyek
+                  Diskusikan Proyek
                 </Link>
               </div>
             </motion.div>
@@ -141,8 +141,11 @@ const Pricing: React.FC = () => {
         {/* SaaS Pricing for UMKM */}
         <div className="text-center mt-20 mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">Paket Langganan untuk UMKM (SaaS)</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-dark-gray">
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-dark-gray">
             Tingkatkan skala bisnis Anda dengan platform software cerdas kami. Berlangganan bulanan, batalkan kapan saja.
+          </p>
+           <p className="mt-2 max-w-2xl mx-auto text-md text-dark-gray">
+            Butuh solusi yang lebih spesifik? Paket dapat disesuaikan. <Link to="contact" smooth={true} duration={500} offset={-70} className="text-secondary font-semibold hover:underline cursor-pointer">Hubungi kami</Link> untuk penawaran kustom.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
